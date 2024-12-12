@@ -67,10 +67,10 @@ onMounted(() => {
 ## API
 `useDeviceOrientation(config: DeviceOrientationConfig = {})`
 
-**Parmeters**
+### Parmeters
 • `deviceMaxWidth (number)`: The maximum width (in pixels) for determining if the device is considered mobile. The default value is 600.
 
-**Returns:**
+### Returns
 • `isMobile` (computed): A reactive value that is true if the device is mobile (i.e., its screen width is less than or equal to the deviceMaxWidth).
 
 • `isMobileAndPortrait` (computed): A reactive value that is true if the device is mobile and in portrait mode.
