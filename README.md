@@ -1,11 +1,10 @@
 # vue-device-orientation
 
-`useDeviceOrientation` is a Vue 3 composable that provides reactive properties and functions to detect device orientation and whether the device is mobile or in portrait mode.
+`useDeviceOrientation` is a Vue 3 composable to detect where the user is on a mobile device, and whether that device is in portrait mode. This can be useful for instructing users to rotate their phone to landscape.
 ## Features
-- **Reactivity**: The composable uses Vue's `ref` and `computed` to provide reactive values for `isMobile` and `isMobileAndPortrait`.
 - **Custom Config**: You can pass a configuration object to customize the maximum width that determines whether the device is considered mobile.
-- **Orientation Change Handling**: It supports detecting orientation changes and provides a callback function to be executed when the orientation changes.
-- **Resize Support**: It listens to window resizing and updates the device state accordingly.
+- **Orientation Change Handling**: Supports detecting orientation changes and provides the option of passing a callback to be executed after the orientation change has completed.
+- **Resize Support**: Listens to window resizing and updates the device state accordingly.
 
 ## Installation
 
