@@ -1,9 +1,10 @@
-export declare const useDeviceOrientation: () => {
-    isMobileAndPortrait: import("vue").Ref<boolean, boolean>;
-    isMobile: import("vue").Ref<boolean, boolean>;
+interface DeviceOrientationConfig {
+    deviceMaxWidth?: number;
+}
+export declare const useDeviceOrientation: (config?: DeviceOrientationConfig) => {
+    isMobile: import("vue").ComputedRef<boolean>;
+    isMobileAndPortrait: import("vue").ComputedRef<boolean>;
     orientationLoading: import("vue").Ref<boolean, boolean>;
-    getIsMobile: () => boolean;
-    getIsMobileAndPortrait: () => boolean;
-    updateMobileCalculations: () => void;
-    onOrientationChange: (cb: () => void) => Promise<void>;
+    onOrientationChange: (cb?: () => void) => Promise<void>;
 };
+export {};
