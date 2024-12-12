@@ -1,0 +1,25 @@
+{
+    "name": "vue-device-orientation",
+    "version": "1.0.0", 
+    "description": "Vue 3 device orientation composable",
+    "main": "dist/useDeviceOrientation.js", 
+    "types": "dist/useDeviceOrientation.d.ts", 
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/patrick-hurley/vue-device-orientation.git"
+    },
+    "keywords": ["vue", "vue 3", "composable", "device-orientation"], 
+    "author": "Patrick Hurley",
+    "license": "MIT",
+    "peerDependencies": {
+      "vue": "^3.0.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.7.2",
+        "vue": "^3.0.0"
+      },
+    "files": [
+      "dist",
+      "README.md"
+    ]
+  }
