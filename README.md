@@ -68,13 +68,16 @@ onMounted(() => {
 `useDeviceOrientation(config: DeviceOrientationConfig = {})`
 
 **Parmeters**
-	•	`deviceMaxWidth (number)`: The maximum width (in pixels) for determining if the device is considered mobile. The default value is 600.
+• `deviceMaxWidth (number)`: The maximum width (in pixels) for determining if the device is considered mobile. The default value is 600.
 
 **Returns:**
-	•	`isMobile` (computed): A reactive value that is true if the device is mobile (i.e., its screen width is less than or equal to the deviceMaxWidth).
-	•	`isMobileAndPortrait` (computed): A reactive value that is true if the device is mobile and in portrait mode.
-	•	`orientationLoading` (ref): A reactive value indicating if the orientation is being updated.
-	•	`onOrientationChange(cb?: () => void)` (function): A function that accepts an optional callback to be executed when the orientation changes. If no callback is provided, the function still updates the state.
+• `isMobile` (computed): A reactive value that is true if the device is mobile (i.e., its screen width is less than or equal to the deviceMaxWidth).
+
+• `isMobileAndPortrait` (computed): A reactive value that is true if the device is mobile and in portrait mode.
+
+• `orientationLoading` (ref): A reactive value indicating if the orientation is being updated.
+
+• `onOrientationChange(cb?: () => void)` (function): A function that accepts an optional callback to be executed when the orientation changes. If no callback is provided, the function still updates the state.
 
 
 ## License
