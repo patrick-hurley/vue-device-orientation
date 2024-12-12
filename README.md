@@ -20,7 +20,7 @@ Import the composable in your Vue component and use it to get the mobile and por
 
 ```html
 <script setup>
-import { useDeviceOrientation } from "use-device-orientation";
+import { useDeviceOrientation } from "vue-device-orientation";
 
 // Initialize with the default config
 const { isMobile, isMobileAndPortrait, orientationLoading, onOrientationChange } = useDeviceOrientation();
@@ -40,7 +40,7 @@ You can pass a custom configuration object to override the default `deviceMaxWid
 
 ```html
 <script setup>
-import { useDeviceOrientation } from "use-device-orientation";
+import { useDeviceOrientation } from "vue-device-orientation";
 
 // Initialize with a custom max width for mobile devices
 const { isMobile, isMobileAndPortrait, orientationLoading, onOrientationChange } = useDeviceOrientation({
@@ -54,7 +54,7 @@ You can optionally provide additional functionality via a callback to be execute
 
 ```html
 <script setup>
-import { useDeviceOrientation } from "use-device-orientation";
+import { useDeviceOrientation } from "vue-device-orientation";
 
 const { onOrientationChange } = useDeviceOrientation();
 
