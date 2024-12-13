@@ -1,8 +1,8 @@
 # vue-device-orientation
 
-`useDeviceOrientation` is a Vue 3 composable to detect where the user is on a mobile device, and whether that device is in portrait mode. This can be useful for instructing users to rotate their phone to landscape.
+Vue 3 composable to detect where the user is on a mobile device, and whether that device is in portrait mode. This can be useful for instructing users to rotate their phone to landscape. Device detection is based on `viewportWidth`, `devicePixelRatio`, and `screen.orientation`.
 ## Features
-- **Custom Config**: You can pass a configuration object to customize the maximum width that determines whether the device is considered mobile.
+- **Custom Config**: You can pass a configuration object to customise the maximum width that determines whether the device is considered mobile.
 - **Orientation Change Handling**: Supports detecting orientation changes and provides the option of passing a callback to be executed after the orientation change has completed.
 - **Resize Support**: Listens to window resizing and updates the device state accordingly.
 
@@ -15,14 +15,20 @@ npm install vue-device-orientation
 ```
 
 ## Basic usage
-Import the composable in your Vue component and use it to get the mobile and portrait state.
+Call the `onOrientationChange` method manually from an **orientationchange** event listener. This event listener is defined in the component instead of the composable so that we have the option of passing an additional method to it when needed (see 'Orientation Change Callback').
 
 ```html
 <script setup>
 import { useDeviceOrientation } from "vue-device-orientation";
-
-// Initialize with the default config
 const { isMobile, isMobileAndPortrait, orientationLoading, onOrientationChange } = useDeviceOrientation();
+
+onMounted(() => {
+    window.addEventListener("orientationchange", () => onOrientationChange());
+});
+
+onUnmounted(() => {
+    window.removeEventListener("orientationchange", () => onOrientationChange());
+});
 </script>
 
 <template>
@@ -35,7 +41,7 @@ const { isMobile, isMobileAndPortrait, orientationLoading, onOrientationChange }
 ```
 
 ### Custom config
-You can pass a custom configuration object to override the default `deviceMaxWidth` (default is 600px).
+You can pass a custom configuration object to override the default `deviceMaxWidth` (default is 600px). The width is calculated by dividing the `viewportWidth` by the `devicePixelRatio`.
 
 ```html
 <script setup>
@@ -49,7 +55,7 @@ const { isMobile, isMobileAndPortrait, orientationLoading, onOrientationChange }
 ```
 
 ### Orientation change callback
-You can optionally provide additional functionality via a callback to be executed when the orientation changes.
+You can optionally provide additional functionality via a callback to be executed when the orientation changes, such as a method which relies on the new screen width.
 
 ```html
 <script setup>
@@ -59,6 +65,10 @@ const { onOrientationChange } = useDeviceOrientation();
 
 onMounted(() => {
     window.addEventListener("orientationchange", () => onOrientationChange(myExtraFunction));
+});
+
+onUnmounted(() => {
+    window.removeEventListener("orientationchange", () => onOrientationChange(myExtraFunction));
 });
 </script>
 ```
@@ -70,13 +80,13 @@ onMounted(() => {
 • `deviceMaxWidth (number)`: The maximum width (in pixels) for determining if the device is considered mobile. The default value is 600.
 
 ### Returns
-• `isMobile` (computed): A reactive value that is true if the device is mobile (i.e., its screen width is less than or equal to the deviceMaxWidth).
+• `isMobile`: Device is mobile (screen width is less than or equal to the `deviceMaxWidth`, taking into account `devicePixelRatio`).
 
-• `isMobileAndPortrait` (computed): A reactive value that is true if the device is mobile and in portrait mode.
+• `isMobileAndPortrait`: Device is mobile and in portrait mode.
 
-• `orientationLoading` (ref): A reactive value indicating if the orientation is being updated.
+• `orientationLoading`: Device orientation is being updated.
 
-• `onOrientationChange(cb?: () => void)` (function): A function that accepts an optional callback to be executed when the orientation changes. If no callback is provided, the function still updates the state.
+• `onOrientationChange(cb?: () => void)`: Recalculates `isMobile` and `isMobilePortrait` values. An optional callback can be provided to be executed after these recalculations have completed.
 
 
 ## License
